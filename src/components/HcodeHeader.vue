@@ -1,6 +1,6 @@
 <template>
     <header>
-        <div class="conatiner">
+        <div class="container">
             <nav class="navbar navbar-expand">
 
                 <a href="#" class="link navbar-brand mr-auto">
