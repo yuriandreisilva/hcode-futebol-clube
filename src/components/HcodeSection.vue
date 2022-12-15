@@ -1,15 +1,19 @@
 <template>
     <div>
-        <HcodeSectionBannerVue />
+        <HcodeSectionBanner />
+        
+        <HcodeSectionNews />
     </div>
 </template>
 
 <script>
-import HcodeSectionBannerVue from './HcodeSectionBanner.vue';
+import HcodeSectionBanner from './HcodeSectionBanner';
+import HcodeSectionNews from './HcodeSectionNews'
 
     export default {
         components: {
-            HcodeSectionBannerVue
+            HcodeSectionBanner,
+            HcodeSectionNews
         } 
     }
 </script>
