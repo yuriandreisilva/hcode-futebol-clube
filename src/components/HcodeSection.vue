@@ -9,9 +9,7 @@
 
         </div>
 
-        <HcodeSectionBanner />
-        
-        <HcodeSectionNews />
+        <component v-bind:is="currentComponent"></component>
 
         <div class="container">
             <div class="row my-club mt-5">
@@ -46,7 +44,8 @@ import HcodeInput from './HcodeInput';
             }
         },
         props: {
-            championship: String
+            championship: String,
+            currentComponent: String
         }
     }
 </script>

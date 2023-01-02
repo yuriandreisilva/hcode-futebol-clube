@@ -1,8 +1,14 @@
 <template>
   <div id="app">
-    <HcodeHeader @select-championship="changeChampionship"/>
+    <HcodeHeader 
+      @select-championship="changeChampionship"
+      @change-component="changeComponent"
+    />
 
-    <HcodeSection v-bind:championship="championship" />
+    <HcodeSection 
+      v-bind:championship="championship" 
+      v-bind:current-component="currentSectionComponent"  
+    />
     
     <HcodeFooter />
   </div>
@@ -22,12 +28,29 @@ export default {
   },
   data(){
     return {
-      championship: 'Campeonato Brasileiro'
+      championship: 'Campeonato Brasileiro',
+      currentSectionComponent: 'HcodeSectionBanner'
     }
   },
   methods:{
     changeChampionship(value){
       this.championship = value;
+    },
+    changeComponent(value){
+      let component;
+      
+      switch(value){
+        case 'home':  
+        default: 
+          component = 'HcodeSectionBanner';
+        break;
+
+        case 'news':
+          component = 'HcodeSectionNews'
+        break;
+      }
+
+      this.currentSectionComponent = component;
     }
   }
 }
