@@ -7,16 +7,18 @@
         </div>
 
         <div class="col-9">
-            <h2>{{ newsTitle }}</h2>
+            <slot name="title"></slot>
 
-            <p>{{ newsContent | truncate(200) }}</p>
+            <slot>Notícia Padrão</slot>
 
-            <span class="font-italic">{{ newsDate }}</span>
+            <span class="font-italic">{{ formatDate(newsDate) }}</span>
         </div>
     </div>        
 </template>
 
 <script>
+import Utils from '@/mixins/UtilsMixin';
+
 export default {
     props: {
         imgName: {
@@ -27,19 +29,12 @@ export default {
             type: String,
             required: true
         },
-        newsTitle: {
-            type: String,
-            required: true
-        },
-        newsContent: {
-            type: String,
-            required: true
-        },
         newsDate: {
             type: String,
             required: true
         }
-    }
+    },
+    mixins: [Utils]
 }
 </script>
 
