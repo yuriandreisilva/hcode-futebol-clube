@@ -6,7 +6,6 @@
     />
 
     <HcodeSection 
-      v-bind:championship="championship" 
       v-bind:current-component="currentSectionComponent"  
     />
     
@@ -15,9 +14,10 @@
 </template>
 
 <script>
-import HcodeHeader from './components/HcodeHeader';
-import HcodeFooter from './components/HcodeFooter';
+import HcodeHeader from './components/HcodeHeader'
+import HcodeFooter from './components/HcodeFooter'
 import HcodeSection from './components/HcodeSection'
+import { mapActions } from 'vuex'
 
 export default {
   name: 'App',
@@ -28,14 +28,11 @@ export default {
   },
   data(){
     return {
-      championship: 'Campeonato Brasileiro',
       currentSectionComponent: 'HcodeSectionBanner'
     }
   },
   methods:{
-    changeChampionship(value){
-      this.championship = value;
-    },
+    ...mapActions(['changeChampionship']),
     changeComponent(value){
       let component;
       
