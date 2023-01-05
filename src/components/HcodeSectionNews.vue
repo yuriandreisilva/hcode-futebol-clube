@@ -1,5 +1,5 @@
 <template>
-    <section>
+    <section class="section-news">
         <div class="container">
 
             <HcodeSectionNewsIndividual 
@@ -11,7 +11,9 @@
             >
 
                 <template v-slot:title>
-                    <h2>{{ notice.title }}</h2>
+                    <router-link tag="h2" v-bind:to="{ name: 'notice', params: { idnotice: notice.id }}">{{ notice.title }}</router-link>
+
+                    <!-- <h2 @click="goToPage(`/news/${notice.id}`)"> {{ notice.title }} </h2> -->
                 </template>
 
                 <p>{{ notice.content | truncate(200) }}</p>
@@ -38,13 +40,17 @@ import { mapGetters } from 'vuex'
             ...mapGetters({
                 news: 'getNews'
             })
-            
+        },
+        methods: {
+            goToPage(page){
+                this.$router.push(page)
+            }
         }
     }
 </script>
 
-<style scoped>
-    section {
+<style>
+    .section-news {
         padding: 50px 0;
         margin-top: 25px;
         background-color: #F37520;

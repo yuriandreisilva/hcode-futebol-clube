@@ -5,9 +5,7 @@
       @change-component="changeComponent"
     />
 
-    <HcodeSection 
-      v-bind:current-component="currentSectionComponent"  
-    />
+    <HcodeSection />
     
     <HcodeFooter />
   </div>
@@ -28,7 +26,7 @@ export default {
   },
   data(){
     return {
-      currentSectionComponent: 'HcodeSectionBanner'
+
     }
   },
   methods:{

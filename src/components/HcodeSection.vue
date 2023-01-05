@@ -9,8 +9,9 @@
 
         </div>
 
-        <component v-bind:is="currentComponent"></component>
-
+        <transition name="fade-view" mode="out-in">
+            <router-view></router-view>
+        </transition>
         <div class="container">
             <div class="row my-club mt-5">
 
@@ -28,14 +29,11 @@
 </template>
 
 <script>
-import HcodeSectionBanner from './HcodeSectionBanner';
 import HcodeInput from './HcodeInput';
 import { mapGetters } from 'vuex';
 
     export default {
         components: {
-            HcodeSectionBanner,
-            HcodeSectionNews: () => import('@/components/HcodeSectionNews'),
             HcodeInput
         },
         data(){
@@ -49,19 +47,17 @@ import { mapGetters } from 'vuex';
             ...mapGetters({
                 championship: 'getChampionship',
                 myClub: 'getClubName'
-            }),
-            // championship() {
-            //     return this.$store.getters.getChampionship
-            // }
-            // ...mapState(['championship']), 
-            // ...mapState({ 
-            //     myClub: 'clubName'
-            // })
-
+            })
         }
     }
 </script>
 
 <style scoped>
+    .fade-view-enter, .fade-view-leave-to {
+        opacity: 0;
+    }
 
+    .fade-view-active, .fade-view-leave-active {
+        transition: opacity .5s ease-in-out;
+    }
 </style>
